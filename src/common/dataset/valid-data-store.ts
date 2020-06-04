@@ -43,4 +43,10 @@ export class ValidDataStore<T> extends DataStore<T> {
     this._error = errors?.[0]?.error;
     return this.valid;
   }
+
+  @action
+  reset(): void {
+    this._error = undefined;
+    super.reset();
+  }
 }

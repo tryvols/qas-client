@@ -12,4 +12,8 @@ export class DatasetUtils {
     const keys = Object.keys(dataset).filter(key => !dataset[key].validate());
     return keys.length === 0;
   }
+
+  static reset<T extends IDataScheme>(dataset: IValidDataset<T>): void {
+    Object.keys(dataset).forEach(key => dataset[key].reset());
+  }
 }

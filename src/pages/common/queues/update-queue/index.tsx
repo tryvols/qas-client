@@ -29,31 +29,36 @@ export const UpdateQueue: FC<UpdateQueueProps> = ({ queue, onReset }) => {
       Notification.success('Queue successfully updated');
       onReset();
       closeModal();
+      DatasetUtils.reset(updateQueueDataset);
     });
   };
 
-  useOnMount(() => {
-    updateQueueDataset.name.set(queue.name);
-    updateQueueDataset.address.set(queue.address);
+  useOnMount(async () => {
+    console.log('here');
   });
 
-  return useObserver(() => (
-    <Fragment>
-      <Button
-        size="small"
-        color="primary"
-        onClick={openModal}
-      >
-        Edit
-      </Button>
-      <BaseDialog
-        title="Update queue"
-        submitLabel="Save"
-        open={isModalOpen}
-        content={<UpdateQueueForm />}
-        onCancel={closeModal}
-        onSubmit={updateQueue}
-      />
-    </Fragment>
-  ));
+  return useObserver(() => {
+    updateQueueDataset.name.set(queue.name);
+    updateQueueDataset.address.set(queue.address);
+
+    return (
+      <Fragment>
+        <Button
+          size="small"
+          color="primary"
+          onClick={openModal}
+        >
+          Edit
+        </Button>
+        <BaseDialog
+          title="Update queue"
+          submitLabel="Save"
+          open={isModalOpen}
+          content={<UpdateQueueForm />}
+          onCancel={closeModal}
+          onSubmit={updateQueue}
+        />
+      </Fragment>
+    );
+  });
 }

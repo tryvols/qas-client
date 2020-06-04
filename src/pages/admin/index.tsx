@@ -8,6 +8,7 @@ export const AdminPage: FC = () => {
 
   return (
     <QueuesListPage
+      title="Admin"
       query={queueApi.getCreatedByUser}
       editable={true}
     />

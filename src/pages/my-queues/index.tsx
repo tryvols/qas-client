@@ -6,5 +6,10 @@ import { QueueApi } from "../../common/api/entities/queue-api";
 export const MyQueuesPage: FC = () => {
   const queueApi = useInject(QueueApi);
 
-  return <QueuesListPage query={queueApi.getInWhichUserIsStanding} />;
+  return (
+    <QueuesListPage
+      title="My queues"
+      query={queueApi.getInWhichUserIsStanding}
+    />
+  );
 }

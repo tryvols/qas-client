@@ -24,6 +24,7 @@ export const CreateQueue: FC<CreateQueueProps> = ({ onReset }) => {
       await queueApi.create(DatasetUtils.serialize(createQueueDataset));
       Notification.success('Queue successfully created');
       closeModal();
+      DatasetUtils.reset(createQueueDataset);
     });
     onReset();
   };

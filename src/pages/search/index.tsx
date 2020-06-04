@@ -6,5 +6,10 @@ import { QueueApi } from "../../common/api/entities/queue-api";
 export const SearchPage: FC = () => {
   const queueApi = useInject(QueueApi);
 
-  return <QueuesListPage query={queueApi.getActiveQueues}/>;
+  return (
+    <QueuesListPage
+      title="Search"
+      query={queueApi.getActiveQueues}
+    />
+  );
 }

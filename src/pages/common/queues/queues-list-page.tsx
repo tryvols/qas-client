@@ -16,11 +16,12 @@ export type QueuesListCallback = (
 ) => Promise<PaginationWrapper<QueuePayload>>;
 
 type QueuesListProps = Readonly<{
+  title: string;
   query: QueuesListCallback;
   editable?: boolean;
 }>;
 
-export const QueuesListPage: FC<QueuesListProps> = ({ query, editable }) => {
+export const QueuesListPage: FC<QueuesListProps> = ({ query, editable, title }) => {
   const queuesStore = useInject(QueuesStore);
   const params = useInject(QueryParams);
   const pagination = usePagination();
@@ -47,7 +48,7 @@ export const QueuesListPage: FC<QueuesListProps> = ({ query, editable }) => {
   );
 
   return useObserver(() =>(
-    <PageTemplate title="Search">
+    <PageTemplate title={title}>
       <QueuesPage
         search={search}
         queues={queuesStore.queues}
